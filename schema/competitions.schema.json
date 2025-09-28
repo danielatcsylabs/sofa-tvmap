@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SofaScore Competitions Catalog",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "sportSlug",
+      "categoryId",
+      "categoryName",
+      "categorySlug",
+      "tournamentId",
+      "tournamentName",
+      "tournamentSlug"
+    ],
+    "properties": {
+      "sportSlug": {
+        "type": "string",
+        "description": "SofaScore sport identifier (e.g. football, basketball)."
+      },
+      "categoryId": {
+        "type": "integer",
+        "description": "Unique SofaScore category identifier."
+      },
+      "categoryName": {
+        "type": "string",
+        "description": "Human-readable category name."
+      },
+      "categorySlug": {
+        "type": "string",
+        "description": "URL-safe category slug."
+      },
+      "categoryAlpha2": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Optional ISO alpha-2 country code backing the category."
+      },
+      "tournamentId": {
+        "type": "integer",
+        "description": "Unique tournament (unique-tournament) identifier."
+      },
+      "tournamentName": {
+        "type": "string",
+        "description": "Human-readable tournament name."
+      },
+      "tournamentSlug": {
+        "type": "string",
+        "description": "URL-safe tournament slug."
+      },
+      "priority": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Optional SofaScore ordering priority (often null for amateur tournaments)."
+      },
+      "gender": {
+        "type": "string",
+        "enum": ["men", "women", "mixed"],
+        "description": "Normalized competition gender classification."
+      },
+      "genderRaw": {
+        "type": ["string", "null"],
+        "description": "Raw gender value as provided by SofaScore (e.g. 'M', 'F')."
+      },
+      "tier": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Optional tier ranking for the competition."
+      },
+      "hasGroups": {
+        "type": [
+          "boolean",
+          "null"
+        ],
+        "description": "Indicates whether the tournament features group stages."
+      },
+      "hasPlayoffSeries": {
+        "type": [
+          "boolean",
+          "null"
+        ],
+        "description": "Whether the tournament includes playoff series format."
+      },
+      "hasRounds": {
+        "type": [
+          "boolean",
+          "null"
+        ],
+        "description": "Whether the tournament is organized in sequential rounds."
+      },
+      "startDateTimestamp": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Start timestamp (epoch seconds) of the tournament if available."
+      },
+      "endDateTimestamp": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "End timestamp (epoch seconds) of the tournament if available."
+      },
+      "displayInverseHomeAwayTeams": {
+        "type": [
+          "boolean",
+          "null"
+        ],
+        "description": "Whether SofaScore displays home/away teams inverted for this competition."
+      },
+      "primaryColorHex": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Primary brand color for the competition (hex)."
+      },
+      "secondaryColorHex": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Secondary brand color for the competition (hex)."
+      },
+      "logo": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "URL to the competition logo image."
+      },
+      "logoUrl": {
+        "type": ["string", "null"],
+        "description": "Resolved SofaScore logo URL for the tournament."
+      },
+      "darkLogo": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "URL to the dark-mode variant of the competition logo."
+      },
+      "darkLogoUrl": {
+        "type": ["string", "null"],
+        "description": "Resolved SofaScore dark logo URL when available."
+      },
+      "country": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "description": "Country metadata resolved from the tournament payload.",
+        "additionalProperties": false,
+        "properties": {
+          "alpha2": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "alpha3": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

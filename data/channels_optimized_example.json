@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "created_at": "2025-08-31T22:33:50.694080",
+    "last_updated": "2025-08-31T22:33:50.694081",
+    "data_source": "SportAPI (sportapi7.p.rapidapi.com)",
+    "total_countries": 250,
+    "total_channels": 3617,
+    "api_compatibility": "SofaScore 100% compatible",
+    "structure": "optimized_for_performance"
+  },
+  "countries": {
+    "US": {
+      "name": "United States",
+      "continent": "North America",
+      "is_eu": false
+    }
+  },
+  "channels": {
+    "672": {
+      "id": 672,
+      "name": "ESPN",
+      "countries": [
+        "US",
+        "CA"
+      ],
+      "logos": [
+        "https://example.com/espn-logo.png"
+      ],
+      "websites": [
+        "https://espn.com"
+      ],
+      "first_discovered": "2025-08-31T22:33:50.694082"
+    }
+  }
+}

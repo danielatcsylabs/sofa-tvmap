@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SofaScore Tournament Participants Dataset",
+  "type": "object",
+  "description": "Map of sport slugs to tournament participant snapshots.",
+  "patternProperties": {
+    "^[a-z0-9\-]+$": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/tournamentSnapshot"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "competitionMetadata": {
+      "$ref": "competitions.schema.json#/items"
+    },
+    "season": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "SofaScore season identifier."
+        },
+        "name": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        },
+        "editor": {
+          "type": "boolean"
+        }
+      }
+    },
+    "teamSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Team identifier."
+        },
+        "name": {
+          "type": "string",
+          "description": "Team display name."
+        },
+        "slug": {
+          "type": ["string", "null"],
+          "description": "URL-safe team slug."
+        },
+        "shortName": {
+          "type": ["string", "null"],
+          "description": "Shortened name when available."
+        },
+        "gender": {
+          "type": ["string", "null"],
+          "description": "Team gender classification (if provided)."
+        },
+        "type": {
+          "type": ["integer", "null"],
+          "description": "SofaScore entity type code."
+        },
+        "country": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "alpha2": {
+              "type": ["string", "null"]
+            },
+            "alpha3": {
+              "type": ["string", "null"]
+            },
+            "name": {
+              "type": ["string", "null"]
+            }
+          }
+        }
+      }
+    },
+    "teamSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seasonId", "season"],
+      "properties": {
+        "seasonId": {
+          "type": "integer",
+          "description": "Season identifier for the fetched team list."
+        },
+        "season": {
+          "$ref": "#/$defs/season"
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/teamSummary"
+          },
+          "description": "Teams or participants registered for the season."
+        },
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["error"],
+          "properties": {
+            "error": {
+              "type": "string",
+              "description": "Captured error message when the API call failed."
+            }
+          }
+        }
+      },
+      "oneOf": [
+        {"required": ["teams"], "not": {"required": ["error"]}},
+        {"required": ["error"], "not": {"required": ["teams"]}}
+      ]
+    },
+    "tournamentSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metadata", "seasons", "teamSets"],
+      "properties": {
+        "metadata": {
+          "$ref": "#/$defs/competitionMetadata"
+        },
+        "seasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/season"
+          },
+          "description": "All season descriptors returned by SofaScore for the tournament."
+        },
+        "teamSets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/teamSet"
+          },
+          "description": "Team rosters for the harvested seasons."
+        },
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["error"],
+          "properties": {
+            "error": {
+              "type": "string",
+              "description": "Top-level error when even the season list could not be retrieved."
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "created_at": "2025-08-31T22:33:50.694071",
+    "source": "SportAPI (sportapi7.p.rapidapi.com)",
+    "total_countries": 250,
+    "total_channels": 3617,
+    "data_completeness": "full",
+    "note": "Complete SportAPI response data preserved"
+  },
+  "channels_by_country": {
+    "US": [
+      {
+        "id": 672,
+        "name": "ESPN",
+        "country_code": "US",
+        "country_name": "United States",
+        "continent": "North America",
+        "is_eu": false,
+        "logo": "https://example.com/espn-logo.png",
+        "website": "https://espn.com",
+        "description": "Sports network covering live events and analysis",
+        "category": "Sports",
+        "language": [
+          "English"
+        ],
+        "hd_available": true,
+        "streaming_provider": "ESPN+",
+        "cable_provider": [
+          "Comcast",
+          "Verizon",
+          "AT&T"
+        ],
+        "first_discovered": "2025-08-31T22:33:50.694076"
+      }
+    ]
+  },
+  "all_channels": {
+    "672": {
+      "id": 672,
+      "name": "ESPN",
+      "countries": [
+        "US",
+        "CA"
+      ],
+      "logos": [
+        "https://example.com/espn-logo.png"
+      ],
+      "websites": [
+        "https://espn.com"
+      ],
+      "descriptions": [
+        "Sports network covering live events"
+      ],
+      "categories": [
+        "Sports"
+      ],
+      "languages": [
+        "English"
+      ],
+      "features": {
+        "hd": true,
+        "4k": false,
+        "streaming": true,
+        "cable": true
+      },
+      "providers": {
+        "streaming": [
+          "ESPN+"
+        ],
+        "cable": [
+          "Comcast",
+          "Verizon",
+          "AT&T"
+        ]
+      },
+      "first_discovered": "2025-08-31T22:33:50.694078"
+    }
+  }
+}
